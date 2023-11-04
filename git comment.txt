@@ -1,0 +1,183 @@
+
+任务一
+
+lizilong:sjtu-cs7354/ (main) $ git branch feature-newFunc                                               [18:18:29]
+lizilong:sjtu-cs7354/ (main) $ git checkout feature-newFunc                                             [18:18:55]
+切换到分支 'feature-newFunc'
+lizilong:sjtu-cs7354/ (feature-newFunc) $ cd mydiary                                                    [18:19:03]
+lizilong:mydiary/ (feature-newFunc) $ vim diary.txt                                                     [18:19:09]
+lizilong:mydiary/ (feature-newFunc✗) $ git add .                                                        [18:19:41]
+lizilong:mydiary/ (feature-newFunc✗) $ git commit -m "Added diary entry for feature work"               [18:19:52]
+[feature-newFunc 3c88182] Added diary entry for feature work
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+lizilong:mydiary/ (feature-newFunc) $ vim diary.txt                                                     [18:20:07]
+lizilong:mydiary/ (feature-newFunc✗) $ git add .                                                        [18:20:27]
+lizilong:mydiary/ (feature-newFunc✗) $ git commit -m "Added another diary entry for feature work"       [18:20:32]
+[feature-newFunc 7811566] Added another diary entry for feature work
+ 1 file changed, 1 insertion(+)
+lizilong:mydiary/ (feature-newFunc) $ git rebase -i HEAD~2                                              [18:20:45]
+[分离头指针 0ee3662] feature: newFunc
+ Date: Fri Nov 3 18:20:06 2023 +0800
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+成功变基并更新 refs/heads/feature-newFunc。
+lizilong:mydiary/ (feature-newFunc) $ git checkout main                                                 [18:23:21]
+切换到分支 'main'
+您的分支与上游分支 'origin/main' 一致。
+lizilong:mydiary/ (main) $ git merge feature-newFunc --no-ff                                            [18:23:38]
+Merge made by the 'ort' strategy.
+ mydiary/diary.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+lizilong:mydiary/ (main) $ git push                                                                     [18:26:00]
+枚举对象中: 8, 完成.
+对象计数中: 100% (8/8), 完成.
+使用 8 个线程进行压缩
+压缩对象中: 100% (4/4), 完成.
+写入对象中: 100% (5/5), 871 字节 | 871.00 KiB/s, 完成.
+总共 5（差异 2），复用 0（差异 0），包复用 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/LogCreative/sjtu-cs7354.git
+   bf1ad18..61e360a  main -> main
+lizilong:mydiary/ (main) $ git checkout feature-newFunc                                                [18:26:24]
+切换到分支 'feature-newFunc'
+lizilong:mydiary/ (feature-newFunc) $ git push -u origin feature-newFunc                               [18:26:34]
+总共 0（差异 0），复用 0（差异 0），包复用 0
+remote: 
+remote: Create a pull request for 'feature-newFunc' on GitHub by visiting:
+remote:      https://github.com/LogCreative/sjtu-cs7354/pull/new/feature-newFunc
+remote: 
+To https://github.com/LogCreative/sjtu-cs7354.git
+ * [new branch]      feature-newFunc -> feature-newFunc
+分支 'feature-newFunc' 设置为跟踪 'origin/feature-newFunc'。
+lizilong:mydiary/ (main) $                                                                             [18:52:15]
+
+任务二
+
+lizilong:sjtu-cs7354/ (feature-newFunc) $ git checkout main                                            [18:37:24]
+切换到分支 'main'
+您的分支与上游分支 'origin/main' 一致。
+lizilong:sjtu-cs7354/ (main) $ git fetch origin experiment                                             [18:37:28]
+来自 https://github.com/LogCreative/sjtu-cs7354
+ * branch            experiment -> FETCH_HEAD
+lizilong:sjtu-cs7354/ (main) $ git cherry-pick origin/experiment^                                      [18:45:24]
+[main 2e27aeb] Added new approach details.
+ Author: peri103 <yunruipei@163.com>
+ Date: Thu Nov 2 11:56:05 2023 +0800
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+lizilong:sjtu-cs7354/ (main) $ git push                                                                [18:48:15]
+枚举对象中: 7, 完成.
+对象计数中: 100% (7/7), 完成.
+使用 8 个线程进行压缩
+压缩对象中: 100% (3/3), 完成.
+写入对象中: 100% (4/4), 603 字节 | 603.00 KiB/s, 完成.
+总共 4（差异 1），复用 1（差异 0），包复用 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/LogCreative/sjtu-cs7354.git
+   61e360a..2e27aeb  main -> main
+lizilong:sjtu-cs7354/ (main) $                                                                        [18:52:56]
+
+任务三
+
+lizilong:sjtu-cs7354/ (main) $ git checkout dev                                                       [19:03:59]
+切换到分支 'dev'
+您的分支与上游分支 'origin/dev' 一致。
+lizilong:sjtu-cs7354/ (dev) $ git log                                                                 [19:04:02]
+lizilong:sjtu-cs7354/ (dev) $ git revert HEAD^^..HEAD                                                 [19:04:05]
+[dev 38363ee] Revert "Mistakenly added irrelevant content"
+ 1 file changed, 1 deletion(-)
+[dev 9d9fabf] Revert "Some content was added repeatedly"
+ 1 file changed, 1 deletion(-)
+lizilong:sjtu-cs7354/ (dev) $ git push                                                                [19:04:38]
+枚举对象中: 11, 完成.
+对象计数中: 100% (11/11), 完成.
+使用 8 个线程进行压缩
+压缩对象中: 100% (4/4), 完成.
+写入对象中: 100% (8/8), 1.09 KiB | 1.09 MiB/s, 完成.
+总共 8（差异 4），复用 4（差异 2），包复用 0
+remote: Resolving deltas: 100% (4/4), completed with 2 local objects.
+To https://github.com/LogCreative/sjtu-cs7354.git
+   7e98124..9d9fabf  dev -> dev
+lizilong:sjtu-cs7354/ (dev) $                                                                         [19:05:38]
+
+任务四
+
+lizilong:sjtu-cs7354/ (dev) $ git checkout main                                                       [19:06:12]
+切换到分支 'main'
+您的分支与上游分支 'origin/main' 一致。
+lizilong:sjtu-cs7354/ (main) $ cd frontend                                                            [19:07:12]
+lizilong:frontend/ (main) $ vim styles.css                                                            [19:07:30]
+lizilong:frontend/ (main✗) $ git add .                                                                [19:07:54]
+lizilong:frontend/ (main✗) $ git commit -m "Change font"                                              [19:07:59]
+[main f3e1c68] Change font
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+lizilong:frontend/ (main) $ git checkout feature-upload                                               [19:08:13]
+分支 'feature-upload' 设置为跟踪 'origin/feature-upload'。
+切换到一个新分支 'feature-upload'
+lizilong:frontend/ (feature-upload) $ git diff main                                                   [19:08:26]
+lizilong:frontend/ (feature-upload) $ git checkout main                                               [19:09:41]
+切换到分支 'main'
+您的分支领先 'origin/main' 共 1 个提交。
+  （使用 "git push" 来发布您的本地提交）
+lizilong:frontend/ (main) $ git merge feature-upload                                                  [19:09:58]
+自动合并 frontend/styles.css
+冲突（内容）：合并冲突于 frontend/styles.css
+自动合并失败，修正冲突然后提交修正的结果。
+lizilong:frontend/ (main✗) $ vim styles.css                                                           [19:10:33]
+lizilong:frontend/ (main✗) $ git add styles.css                                                       [19:11:29]
+lizilong:frontend/ (main✗) $ git merge --continue                                                     [19:11:38]
+[main 57721e2] Merge branch 'feature-upload'
+lizilong:frontend/ (main) $ git push                                                                  [19:14:22]
+枚举对象中: 14, 完成.
+对象计数中: 100% (14/14), 完成.
+使用 8 个线程进行压缩
+压缩对象中: 100% (7/7), 完成.
+写入对象中: 100% (8/8), 1.16 KiB | 1.16 MiB/s, 完成.
+总共 8（差异 2），复用 0（差异 0），包复用 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/LogCreative/sjtu-cs7354.git
+   2e27aeb..57721e2  main -> main
+lizilong:frontend/ (main) $                                                                           [19:14:26]
+
+任务五
+
+lizilong:sjtu-cs7354/ (main) $ git checkout -b documentation --track origin/documentation             [19:16:27]
+分支 'documentation' 设置为跟踪 'origin/documentation'。
+切换到一个新分支 'documentation'
+lizilong:sjtu-cs7354/ (documentation) $ git rebase -i HEAD~4                                          [19:23:09]
+
+pick 2fc2e17 Add contributing guide 
+pick 1d3dee7 Update project overview with new feature description 
+squash 9caa536 Fix description in project overview 
+pick 9cf2a7d Add installation guide
+
+[分离头指针 9d4a1bd] Update project overview with new feature description
+ Author: peri103 <yunruipei@163.com>
+ Date: Thu Nov 2 12:13:11 2023 +0800
+ 1 file changed, 2 insertions(+)
+成功变基并更新 refs/heads/documentation。
+lizilong:sjtu-cs7354/ (documentation) $ git push -f                                                   [19:26:03]
+总共 0（差异 0），复用 0（差异 0），包复用 0
+To https://github.com/LogCreative/sjtu-cs7354.git
+ + 9caa536...96ec267 documentation -> documentation (forced update)
+lizilong:sjtu-cs7354/ (documentation) $ git checkout main                                             [19:29:07]
+切换到分支 'main'
+您的分支与上游分支 'origin/main' 一致。
+lizilong:sjtu-cs7354/ (main) $ git merge documentation                                                [19:29:35]
+Merge made by the 'ort' strategy.
+ documentation/CONTRIBUTING_GUIDE.md | 5 +++++
+ documentation/INSTALL_GUIDE.md      | 5 +++++
+ documentation/PROJECT_OVERVIEW.md   | 2 ++
+ 3 files changed, 12 insertions(+)
+ create mode 100644 documentation/CONTRIBUTING_GUIDE.md
+ create mode 100644 documentation/INSTALL_GUIDE.md
+lizilong:sjtu-cs7354/ (main) $ git push                                                               [19:29:42]
+枚举对象中: 20, 完成.
+对象计数中: 100% (18/18), 完成.
+使用 8 个线程进行压缩
+压缩对象中: 100% (14/14), 完成.
+写入对象中: 100% (14/14), 2.29 KiB | 2.29 MiB/s, 完成.
+总共 14（差异 6），复用 2（差异 0），包复用 0
+remote: Resolving deltas: 100% (6/6), completed with 2 local objects.
+To https://github.com/LogCreative/sjtu-cs7354.git
+   57721e2..b06a8a1  main -> main
+lizilong:sjtu-cs7354/ (main) $                                                                        [19:30:04]
+
